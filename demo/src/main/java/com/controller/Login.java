@@ -32,9 +32,6 @@ public class UserLoginController {
         if(userService.checkPasswordUser(userDto.getEmail(),userDto.getPassword())){
             return "redirect:/home?success";
         }
-        //lát xóa nha
-        int a =10;
-        int b = 1;
         return "redirect:/login?passwordwrong";
     }
 }
