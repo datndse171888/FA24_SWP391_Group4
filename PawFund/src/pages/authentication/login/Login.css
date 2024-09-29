@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+}
+
+.input-form {
+    height: 50vh;
+}
+
+.input-field {
+    position: relative;
+    margin: 50px;
+}
+
+.input-field_input {
+    font: inherit;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    outline: 2px solid #fff;
+    background-color: transparent;
+    transition: outline-color 500ms;
+}
+
+.input-field_input:is(:focus, :valid) {
+    outline-color: #3c50eb;
+}
+
+.input-field_label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: 10px 10px;
+    color: #fff;
+    transition: translate 500ms,
+        scale 500ms;
+}
+
+.input-field_input:focus+.input-field_label,
+.input-field_input:valid+.input-field_label {
+    padding-inline: 5px;
+    translate: 10px -14px;
+    scale: 0.8;
+    background-color: none;
+}
+
+.input-button {
+    text-align: center;
+    margin: 50px;
+}
