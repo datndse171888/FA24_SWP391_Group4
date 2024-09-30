@@ -2,8 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import api from '../../../config/axios.jsx'
 import './Login.css'
+import axios from 'axios'
 
-const login = () => {
+const Login = () => {
+
     const [account, setAccount] = useState({
         gmail: '',
         password: ''
@@ -19,16 +21,24 @@ const login = () => {
     }
 
     const handleLogin = async (e) => {
-        try {
-            const formData = new FormData();
-            formData.append('gmail', gmail);
-            formData.append('password', password);
-            const respone = await api.post('', formData).then((res) => {
-                console.log(respone);
-            })
-        } catch (error) {
-            console.log(error);
-        }
+        e.preventDefault();
+        
+        let res = await api.post('api/login', {"email": account.gmail, "password": account.password});
+        const data = res?.data;
+            if (data && data.token) {
+                localStorage.setItem('token', data.token);
+            }
+            console.log(data.token);
+        // try {
+        //     // const formData = new FormData();
+        //     // formData.append('gmail', account.gmail);
+        //     // formData.append('password', account.password);
+        //     // console.log(formData);
+        //     const response = await login.post('api/login', {"email": account.gmail, "password": account.password});
+            
+        // } catch (error) {
+        //     console.log(error);
+        // }
     }
 
     return (
@@ -36,7 +46,7 @@ const login = () => {
             <div className="input-form">
                 <div className="input-field">
                     <input className='input-field_input' type="text" id='gmail' name='gmail' value={account.gmail} onChange={handleAccountChange} required />
-                    <label htmlFor='gmail' className='input-field_label'>Username </label>
+                    <label htmlFor='gmail' className='input-field_label'>Gmail </label>
                 </div>
                 <div className="input-field">
                     <input className='input-field_input' type="password" id='password' name='password' value={account.password} onChange={handleAccountChange} required />
@@ -50,4 +60,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login
