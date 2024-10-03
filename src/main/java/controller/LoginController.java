@@ -1,20 +1,29 @@
 package controller;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import service.UserService;
 import dto.UserDTO;
 import entity.User;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import service.UserService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
-@RestController
 @RequestMapping("/api/auth") 
+@RestController
 @AllArgsConstructor
+@SessionAttributes("userdto")
 public class LoginController {
-
-    private final UserService userService;
-
+    private UserService userService;
+    @ModelAttribute("userdto")
+    public UserDTO userDTO(){
+        return new UserDTO();
+    }
+    @GetMapping("/login")
+    public String showLoginForm(){
+        return "/login";
+    }
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO userDto) {
         if (!userService.checkUserbyEmail(userDto.getEmail())) {
