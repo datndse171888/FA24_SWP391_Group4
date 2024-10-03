@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import api from '../../../config/axios.jsx'
-import './Login.css'
+import './login.css'
 
 const Login = () => {
 
@@ -23,14 +23,25 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const json = {
-                "email": account.gmail,
-                "password": account.password
+            // const json = {
+            //     "email": account.gmail,
+            //     "password": account.password
+            // }
+
+            let formData = new FormData();
+            formData.append('email', account.gmail);
+            formData.append('password', account.password);
+
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
 
-            let res = await api.post('api/login', json);
+            let res = await api.post('/auth/login', formData, config);
             const data = res?.data;
             if (data && data.token) {
+                console.log(data.token);
                 localStorage.setItem('token', data.token);
             }
 

@@ -1,10 +1,10 @@
-/* body{
+body{
     display:flex;
     margin:0;
     padding:0;
     min-height: 100vh;
-    background: #181827;
+    background: #ffffff;
     justify-content: center;
     align-items: center;
     font-family: arial;
-  } */
+  }
