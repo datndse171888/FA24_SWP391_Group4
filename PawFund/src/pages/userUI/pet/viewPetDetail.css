@@ -1,0 +1,33 @@
+.body{
+    place-items: center;
+    place-content: center;
+    padding-top: 50px;
+   color: blue;
+   background-color: #CC99FF;
+}
+.list-group{
+    width: 500px;
+}
+.col1{
+    margin-right: -200px;
+    margin-left: 190px;
+}
+.col2{
+    margin-left: -0px;
+}
+.list-group-item{
+    margin: 3px;
+    border-radius: 10px;
+}
+.input-button{
+  margin-left: 250px;
+}
+.btn1{
+    background-color: 	#ffd3d3;
+    border-radius: 100px;
+    border:1px solid #660099;
+    color: rgb(123, 0, 255);
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: 2px 2px 5px rgb(241, 176, 239);
+}
