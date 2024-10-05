@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import service.UserService;
 
 @RestController
-@RequestMapping("/api/auth") 
+@RequestMapping("/api/auth")
 @AllArgsConstructor
 public class LoginController {
 
