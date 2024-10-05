@@ -1,21 +1,14 @@
-import React from 'react'
-import Header from '../../../component/header/header'
-import Card from '../../../component/card/card'
+// import React from "react";
+import Header from "../../../component/header/header";
+import Body from "../../../component/body/body";
 
 const homepage = () => {
-  const json = {
-    
-    "name": "Kitty",
-    "age": "Medium",
-    "breed": "Siamese"
-  }
-  
   return (
     <div>
       <Header />
-      <Card cat={json} />
+      <Body />
     </div>
-  )
-}
+  );
+};
 
-export default homepage
+export default homepage;
