@@ -1,0 +1,15 @@
+.carousel-indicators [data-bs-target] {
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+}
+
+.carousel-custom {
+  height: 100px;
+}
+
+.carousel-custom img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
