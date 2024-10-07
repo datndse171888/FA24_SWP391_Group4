@@ -18,9 +18,9 @@ const body = () => {
           <h3 className="title-2">How You Can Help</h3>
           <div className="button-container">
             <button className="action-button">DONATE NOW</button>
-            <button className="action-button">DESIGNATE GIFT</button>
-            <button className="action-button">WISH LIST</button>
-            <button className="action-button">TRIBUTE GIFT</button>
+            <button className="action-button">GIVING</button>
+            <button className="action-button">VOLUNTEER</button>
+            <button className="action-button">ADOPTED</button>
           </div>
         </div>
       </div>

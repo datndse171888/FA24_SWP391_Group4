@@ -1,16 +1,16 @@
-import { Button, Container, Nav, Navbar, NavDropdown, Image } from 'react-bootstrap';
-import './header.css';
-import Logo from '../logo/SWP391.png';
+import { Button, Container, Nav, Navbar, Image } from "react-bootstrap";
+import "./header.css";
+import Logo from "../logo/SWP391.png";
 
 const header = () => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   return (
-    <Navbar className='navbar p-0' data-bs-theme='light'>
+    <Navbar className="navbar p-0" data-bs-theme="light">
       <Container>
         <Image src={Logo} className='logo border' alt='Logo' roundedCircle />
         <Navbar.Brand style={{ color: '#3926CD' }} href="/">PawFund</Navbar.Brand>
-        {/*<Navbar.Collapse className=''>
+        {/* <Navbar.Collapse className=''>
            <Nav className='mx-auto row'>
             <Nav.Link style={{color:'#3926CD'}} className='px-5 border col text-center' href="/">HOME</Nav.Link>
             <Nav.Link style={{color:'#3926CD'}} className='px-5 border col text-center' href="/petlist">PET</Nav.Link>
@@ -28,10 +28,14 @@ const header = () => {
             <Nav.Link style={{ color: '#3926CD' }} className='px-5 py-3 border nav-link' href="/aboutus">Về chúng tôi</Nav.Link>
           </Nav> 
         </Navbar.Collapse>
-        {token ? null : <Button href='/login' variant="outline-dark">Login</Button>}
+        {token ? null : (
+          <Button href="/login" variant="outline-dark">
+            Login
+          </Button>
+        )}
       </Container>
     </Navbar>
   );
-}
+};
 
 export default header;
