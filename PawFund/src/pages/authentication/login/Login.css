@@ -1,14 +1,19 @@
-.container {
+.container-login{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .input-form {
-    height: 50vh;
+    display: block;
+    height: auto;
+    background-color: #d4b5ff;
+    border-radius: 10px;
 }
 
 .input-field {
     position: relative;
-    margin: 50px;
 }
 
 .input-field_input {
@@ -45,6 +50,5 @@
 }
 
 .input-button {
-    text-align: center;
-    margin: 50px;
+    
 }

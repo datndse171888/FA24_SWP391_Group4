@@ -12,3 +12,7 @@
 .text{
     size: 20px;
 }
+
+.nav-link:hover{
+    background-color: aqua;
+}
