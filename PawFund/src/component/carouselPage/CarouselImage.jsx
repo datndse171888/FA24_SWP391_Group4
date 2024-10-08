@@ -2,7 +2,7 @@ import Carousel from "react-bootstrap/Carousel";
 import img1 from "../../Image/banner/img1.jpg";
 import img2 from "../../Image/banner/img2.jpg";
 import img3 from "../../Image/banner/img3.jpg";
-import "./Carousel.css";
+import "./carousel.css";
 
 const CarouselImage = () => {
   return (

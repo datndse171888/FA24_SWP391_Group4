@@ -2,6 +2,7 @@
 import api from "axios";
 import { useState } from "react";
 import { FaUserAlt, FaLock, FaEnvelope } from "react-icons/fa";
+import { TbMoodLookLeft, TbMoodLookRight } from "react-icons/tb";
 import "./Register.css";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
@@ -9,14 +10,22 @@ const Register = () => {
   const [register, setRegister] = useState({
     gmail: "",
     password: "",
-    roleName: "",
+    roleId: "",
     avatar: "",
     name: "",
     address: "",
     dateOfBirth: "",
     gender: "",
-    phoneNumber: "",
+    phoneNumber: ""
   });
+
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [role, setRole] = useState("Role");
+
+  const [terms, setTerms] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegisterChange = (e) => {
     const name = e.target.name;
@@ -27,17 +36,34 @@ const Register = () => {
     });
   };
 
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  }
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  }
+
+  // not handle yet
+  const handleRole = (e) => {
+    setRole(e.target.text);
+  };
+
+  const handleTerms = () => {
+    setTerms(!terms);
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       const json = {
         email: register.gmail,
         password: register.password,
-        roleName: register.roleName,
+        roleId: register.roleId,
         avatar: register.avatar,
         name: register.name,
         address: register.address,
-        dateOfBirth: register.dateOfBirth,
+        dateOfBirth: register.dateOfBirth
       };
       let res = await api.post("register", json);
       if (res.status === 200) {
@@ -48,22 +74,32 @@ const Register = () => {
     }
   };
 
+  const nevigateInfoPage = () => {
+    if (register.password.length < 8) {
+      alert("Password must be at least 8 characters");
+    }
+    if (register.password !== confirmPassword) {
+      alert("Password not match");
+      return;
+    }
+    if (terms === false) {
+      alert("Please agree to the terms & conditions");
+      return;
+    }
+    if (register.roleId === "") {
+      alert("Please choose your role");
+      return;
+    }
+    console.log("Nevigate to info page");
+    console.log(register);
+  }
+
   return (
     <div className="register-page">
       <div className="wrapper">
         <div className="form-box register">
           <form onSubmit={handleRegister}>
             <h1>Registration</h1>
-            <div className="input-box">
-              <input
-                type="text"
-                name="name"
-                placeholder="Username"
-                required
-                onChange={handleRegisterChange}
-              />
-              <FaUserAlt className="icon" />
-            </div>
             <div className="input-box">
               <input
                 type="email"
@@ -76,61 +112,75 @@ const Register = () => {
             </div>
             <div className="input-box">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Password"
                 required
                 onChange={handleRegisterChange}
               />
-              <FaLock className="icon" />
+              {
+                showPassword ? 
+                <TbMoodLookLeft className="icon" onClick={handleShowPassword} /> : 
+                <TbMoodLookRight className="icon" onClick={handleShowPassword} />
+              }
             </div>
             <div className="input-box">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Confirm password"
                 required
-                onChange={handleRegisterChange}
+                onChange={handleConfirmPasswordChange}
               />
-              <FaLock className="icon" />
+              {
+                showPassword ? 
+                <TbMoodLookLeft className="icon" onClick={handleShowPassword} /> : 
+                <TbMoodLookRight className="icon" onClick={handleShowPassword} />
+              }
             </div>
             <div className="forgot-remember">
               <label>
-                <input type="checkbox" /> I agree to the terms & conditions
+                <input type="checkbox" onChange={handleTerms} /> I agree to the terms & conditions
               </label>
-              <label>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item
-                    style={{ color: "#002795" }}
-                    href="#action/3.1"
-                  >
-                    Donor
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    style={{ color: "#002795" }}
-                    href="#action/3.2"
-                  >
-                    Shelter
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    style={{ color: "#002795" }}
-                    href="#action/3.3"
-                  >
-                    Adopter
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    style={{ color: "#002795" }}
-                    href="#action/3.4"
-                  >
-                    Volunteer
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </label>
+              <NavDropdown title={role} id="basic-nav-dropdown" name='roleId' >
+                <NavDropdown.Item
+                  style={{ color: "#002795" }}
+                  name="roleId"
+                  value="4"
+                  onClick={handleRole}
+                >
+                  Donor
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  style={{ color: "#002795" }}
+                  name="roleId"
+                  value="2"
+                  onClick={handleRole}
+                >
+                  Shelter
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  style={{ color: "#002795" }}
+                  name="roleId"
+                  value="3"
+                  onClick={handleRole}
+                >
+                  Adopter
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  style={{ color: "#002795" }}
+                  name="roleId"
+                  value="5"
+                  onClick={handleRole}
+                >
+                  Volunteer
+                </NavDropdown.Item>
+              </NavDropdown>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit" onClick={nevigateInfoPage}>Register</button>
             <div className="register-link">
               <p>
-                Already have an account? <a href="#">Login</a>
+                Already have an account? <a href="/login">Login</a>
               </p>
             </div>
           </form>

@@ -1,6 +1,6 @@
 import Carousel from "react-bootstrap/Carousel";
-import CarouselImage from "./CarouselImage.jsx";
-import "./Carousel.css";
+import CarouselImage from "./carouselImage.jsx";
+import "./carousel.css";
 
 const CarouselPage = () => {
   return (

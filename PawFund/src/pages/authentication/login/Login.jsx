@@ -88,7 +88,7 @@ const Login = () => {
         <Stack gap={1} className="mx-auto input-field my-4">
           <Form.Control
             className="input-field_input"
-            type="text"
+            type="email"
             id="gmail"
             name="gmail"
             value={account.gmail}
