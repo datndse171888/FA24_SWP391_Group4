@@ -1,14 +1,18 @@
+.register-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .register-page {
   font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url(".assets/background.jpg") no-repeat;
+  background: url("./Components/Assets/try.jpg") no-repeat;
   background-size: cover;
   background-position: center;
-  padding: 0;
-  margin: 0;
 }
 
 .wrapper {
@@ -23,14 +27,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   transition: height 0.2s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.register-page * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 .wrapper .form-box {
@@ -38,10 +37,29 @@
   padding: 40px;
 }
 
-.wrapper .form-box.register {
+.wrapper.active {
+  height: 520px;
+}
+
+.wrapper.active .form-box.register {
+  transition: none;
+  translate: -400px;
+}
+
+.wrapper .form-box.information {
   position: absolute;
   transition: none;
-  /* translate: 400px; */
+  translate: 400px;
+}
+
+.wrapper .form-box.register {
+  transition: translate 0.18s ease;
+  translate: 0;
+}
+
+.wrapper.active .form-box.information {
+  transition: translate 0.18s ease;
+  translate: 0;
 }
 
 form h1 {
