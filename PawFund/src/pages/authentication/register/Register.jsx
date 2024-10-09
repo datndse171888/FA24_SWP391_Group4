@@ -1,7 +1,7 @@
 // Register.jsx
 import api from "axios";
 import { useState } from "react";
-import { FaUserAlt, FaLock, FaEnvelope } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 import { TbMoodLookLeft, TbMoodLookRight } from "react-icons/tb";
 import "./Register.css";
 import { Dropdown, NavDropdown, DropdownButton } from "react-bootstrap";
@@ -16,7 +16,7 @@ const Register = () => {
     address: "",
     dateOfBirth: "",
     gender: "",
-    phoneNumber: ""
+    phoneNumber: "",
   });
 
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -38,11 +38,11 @@ const Register = () => {
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
-  }
+  };
 
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
-  }
+  };
 
   const handleRole = (e) => {
     setRole(e.target.innerText);
@@ -63,7 +63,7 @@ const Register = () => {
         avatar: register.avatar,
         name: register.name,
         address: register.address,
-        dateOfBirth: register.dateOfBirth
+        dateOfBirth: register.dateOfBirth,
       };
       let res = await api.post("register", json);
       if (res.status === 200) {
@@ -92,11 +92,26 @@ const Register = () => {
     }
     console.log("Nevigate to info page");
     console.log(register);
-  }
+  };
+
+  const [action, setAction] = useState("");
+
+  const informationLink = () => {
+    setAction("active");
+  };
+
+  const registerLink = () => {
+    setAction("");
+  };
+
+  const handleClick = () => {
+    nevigateInfoPage();
+    informationLink();
+  };
 
   return (
     <div className="register-page">
-      <div className="wrapper">
+      <div className={`wrapper ${action}`}>
         <div className="form-box register">
           <form onSubmit={handleRegister}>
             <h1>Registration</h1>
@@ -118,11 +133,13 @@ const Register = () => {
                 required
                 onChange={handleRegisterChange}
               />
+
               {
                 showPassword ?
                   <TbMoodLookLeft className="icon" onClick={handleShowPassword} /> :
                   <TbMoodLookRight className="icon" onClick={handleShowPassword} />
               }
+
             </div>
             <div className="input-box">
               <input
@@ -132,6 +149,7 @@ const Register = () => {
                 required
                 onChange={handleConfirmPasswordChange}
               />
+
               {
                 showPassword ?
                   <TbMoodLookLeft className="icon" onClick={handleShowPassword} /> :
@@ -139,7 +157,12 @@ const Register = () => {
               }
             </div>
             <div className="input-box ">
-              {/* <NavDropdown title={role} id="basic-nav-dropdown" name='roleId' >
+              {/* <div className="forgot-remember">
+              <label>
+                <input type="checkbox" onChange={handleTerms} /> I agree to the
+                terms & conditions
+              </label>
+              <NavDropdown title={role} id="basic-nav-dropdown" name="roleId">
                 <NavDropdown.Item
                   style={{ color: "#002795" }}
                   name="roleId"
@@ -174,10 +197,10 @@ const Register = () => {
                 </NavDropdown.Item>
               </NavDropdown> */}
               <DropdownButton id="dropdown-item-button" title={role} onClick={handleRole}>
-                <Dropdown.Item className="px-2" name='roleId' value='2' as="button" >Shelter</Dropdown.Item>
-                <Dropdown.Item className="px-2" name='roleId' value='3' as="button" >Adopter</Dropdown.Item>
-                <Dropdown.Item className="px-2" name='roleId' value='4' as="button" >Donor</Dropdown.Item>
-                <Dropdown.Item className="px-2" name='roleId' value='5' as="button" >Volunteer</Dropdown.Item>
+                <Dropdown.Item className="px-2 dropdown-item" name='roleId' value='2' as="button" >Shelter</Dropdown.Item>
+                <Dropdown.Item className="px-2 dropdown-item" name='roleId' value='3' as="button" >Adopter</Dropdown.Item>
+                <Dropdown.Item className="px-2 dropdown-item" name='roleId' value='4' as="button" >Donor</Dropdown.Item>
+                <Dropdown.Item className="px-2 dropdown-item" name='roleId' value='5' as="button" >Volunteer</Dropdown.Item>
               </DropdownButton>
             </div>
             <div className="forgot-remember">
@@ -185,10 +208,114 @@ const Register = () => {
                 <input type="checkbox" onChange={handleTerms} /> I agree to the terms & conditions
               </label>
             </div>
-            <button type="submit" onClick={nevigateInfoPage}>Register</button>
+            <button type="submit" onClick={handleClick}>
+              Register
+            </button>
             <div className="register-link">
               <p>
                 Already have an account? <a href="/login">Login</a>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        {/* --------------------- INFORMATION FORM ---------------------------- */}
+        <div className="form-box information">
+          <form onSubmit={handleRegister}>
+            <h1>Information</h1>
+            <div className="input-box">
+              <input
+                type="email"
+                name="gmail"
+                placeholder="Email"
+                required
+                onChange={handleRegisterChange}
+              />
+              <FaEnvelope className="icon" />
+            </div>
+            <div className="input-box">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                required
+                onChange={handleRegisterChange}
+              />
+              {showPassword ? (
+                <TbMoodLookLeft className="icon" onClick={handleShowPassword} />
+              ) : (
+                <TbMoodLookRight
+                  className="icon"
+                  onClick={handleShowPassword}
+                />
+              )}
+            </div>
+            <div className="input-box">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="confirmPassword"
+                placeholder="Confirm password"
+                required
+                onChange={handleConfirmPasswordChange}
+              />
+              {showPassword ? (
+                <TbMoodLookLeft className="icon" onClick={handleShowPassword} />
+              ) : (
+                <TbMoodLookRight
+                  className="icon"
+                  onClick={handleShowPassword}
+                />
+              )}
+            </div>
+            <div className="forgot-remember">
+              <label>
+                <input type="checkbox" onChange={handleTerms} /> I agree to the
+                terms & conditions
+              </label>
+              <NavDropdown title={role} id="basic-nav-dropdown" name="roleId">
+                <NavDropdown.Item
+                  style={{ color: "#002795" }}
+                  name="roleId"
+                  value="4"
+                  onClick={handleRole}
+                >
+                  Donor
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  style={{ color: "#002795" }}
+                  name="roleId"
+                  value="2"
+                  onClick={handleRole}
+                >
+                  Shelter
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  style={{ color: "#002795" }}
+                  name="roleId"
+                  value="3"
+                  onClick={handleRole}
+                >
+                  Adopter
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  style={{ color: "#002795" }}
+                  name="roleId"
+                  value="5"
+                  onClick={handleRole}
+                >
+                  Volunteer
+                </NavDropdown.Item>
+              </NavDropdown>
+            </div>
+            <button type="submit" onClick={nevigateInfoPage}>
+              Register
+            </button>
+            <div className="register-link">
+              <p>
+                Something wrong?{" "}
+                <a href="#" onClick={registerLink}>
+                  Register
+                </a>
               </p>
             </div>
           </form>
