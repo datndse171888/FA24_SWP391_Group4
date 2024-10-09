@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FaUserAlt, FaLock, FaEnvelope } from "react-icons/fa";
 import { TbMoodLookLeft, TbMoodLookRight } from "react-icons/tb";
 import "./Register.css";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import { Dropdown, NavDropdown, DropdownButton } from "react-bootstrap";
 
 const Register = () => {
   const [register, setRegister] = useState({
@@ -21,7 +21,7 @@ const Register = () => {
 
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [role, setRole] = useState("Role");
+  const [role, setRole] = useState("Choose your role");
 
   const [terms, setTerms] = useState(false);
 
@@ -44,9 +44,9 @@ const Register = () => {
     setConfirmPassword(e.target.value);
   }
 
-  // not handle yet
   const handleRole = (e) => {
-    setRole(e.target.text);
+    setRole(e.target.innerText);
+    handleRegisterChange(e);
   };
 
   const handleTerms = () => {
@@ -119,9 +119,9 @@ const Register = () => {
                 onChange={handleRegisterChange}
               />
               {
-                showPassword ? 
-                <TbMoodLookLeft className="icon" onClick={handleShowPassword} /> : 
-                <TbMoodLookRight className="icon" onClick={handleShowPassword} />
+                showPassword ?
+                  <TbMoodLookLeft className="icon" onClick={handleShowPassword} /> :
+                  <TbMoodLookRight className="icon" onClick={handleShowPassword} />
               }
             </div>
             <div className="input-box">
@@ -133,16 +133,13 @@ const Register = () => {
                 onChange={handleConfirmPasswordChange}
               />
               {
-                showPassword ? 
-                <TbMoodLookLeft className="icon" onClick={handleShowPassword} /> : 
-                <TbMoodLookRight className="icon" onClick={handleShowPassword} />
+                showPassword ?
+                  <TbMoodLookLeft className="icon" onClick={handleShowPassword} /> :
+                  <TbMoodLookRight className="icon" onClick={handleShowPassword} />
               }
             </div>
-            <div className="forgot-remember">
-              <label>
-                <input type="checkbox" onChange={handleTerms} /> I agree to the terms & conditions
-              </label>
-              <NavDropdown title={role} id="basic-nav-dropdown" name='roleId' >
+            <div className="input-box ">
+              {/* <NavDropdown title={role} id="basic-nav-dropdown" name='roleId' >
                 <NavDropdown.Item
                   style={{ color: "#002795" }}
                   name="roleId"
@@ -175,7 +172,18 @@ const Register = () => {
                 >
                   Volunteer
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
+              <DropdownButton id="dropdown-item-button" title={role} onClick={handleRole}>
+                <Dropdown.Item className="px-2" name='roleId' value='2' as="button" >Shelter</Dropdown.Item>
+                <Dropdown.Item className="px-2" name='roleId' value='3' as="button" >Adopter</Dropdown.Item>
+                <Dropdown.Item className="px-2" name='roleId' value='4' as="button" >Donor</Dropdown.Item>
+                <Dropdown.Item className="px-2" name='roleId' value='5' as="button" >Volunteer</Dropdown.Item>
+              </DropdownButton>
+            </div>
+            <div className="forgot-remember">
+              <label>
+                <input type="checkbox" onChange={handleTerms} /> I agree to the terms & conditions
+              </label>
             </div>
             <button type="submit" onClick={nevigateInfoPage}>Register</button>
             <div className="register-link">

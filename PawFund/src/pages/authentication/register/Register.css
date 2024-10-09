@@ -132,3 +132,7 @@ form .register-link {
 .register-link a:hover {
   text-decoration: underline;
 }
+
+.dropdown-item{
+  width: 34.24vw;
+}
