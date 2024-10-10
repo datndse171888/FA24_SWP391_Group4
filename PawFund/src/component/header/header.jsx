@@ -10,7 +10,7 @@ const header = () => {
     <Navbar className="navbar p-0" data-bs-theme="light">
       <Container>
         <Image src={Logo} className='logo border' alt='Logo' roundedCircle />
-        <Navbar.Brand style={{ color: '#3926CD' }} href="/">PawFund</Navbar.Brand>
+        <Navbar.Brand className="pawfund" href="/">PawFund</Navbar.Brand>
         {/* <Navbar.Collapse className=''>
            <Nav className='mx-auto row'>
             <Nav.Link style={{color:'#3926CD'}} className='px-5 border col text-center' href="/">HOME</Nav.Link>
