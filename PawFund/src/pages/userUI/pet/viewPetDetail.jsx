@@ -16,6 +16,14 @@ const viewPetDetail = () => {
         sterilization: '',
         vaccination: ''
     })
+
+    const [register, setRegister] = useState({
+        catID: useParams(),
+        createDate: new Date(),
+        adopterID: localStorage.getItem('userID'),
+        status: 'WAITING'
+    });
+
     const { id } = useParams();
 
     const handleChangeInfo = (e) => {
