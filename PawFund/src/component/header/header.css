@@ -16,3 +16,15 @@
 .nav-link:hover{
     background-color: aqua;
 }
+
+.nav-link{
+    font-family:'sans-serif';
+    font-size: 28px;
+}
+
+.pawfund{
+    font-family: 'sans-serif';
+    font-size: 32px;
+    color: rgb(194, 0, 116);
+    font-weight: bold;
+}

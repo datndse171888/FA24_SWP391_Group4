@@ -1,20 +1,20 @@
 import Carousel from "react-bootstrap/Carousel";
-import img1 from "../../Image/banner/img1.jpg";
-import img2 from "../../Image/banner/img2.jpg";
-import img3 from "../../Image/banner/img3.jpg";
+import img1 from "../../Image/banner/Pic1.jpg";
+import img2 from "../../Image/banner/Pic2.png";
+import img3 from "../../Image/banner/Pic3.jpg";
 import "./carousel.css";
 
 const CarouselImage = () => {
   return (
     <Carousel>
       <Carousel.Item>
-        <img className="d-block w-100" src={img1} alt="First slide" />
+        <img className="img" src={img1} alt="First slide" />
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={img2} alt="Second slide" />
+        <img className="img" src={img2} alt="Second slide" />
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={img3} alt="Third slide" />
+        <img className="img" src={img3} alt="Third slide" />
       </Carousel.Item>
     </Carousel>
   );
