@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Image } from 'react-bootstrap'
-import Logo from '../logo/SWP391.png'
+import Logo from '../../Image/logo/SWP391.png'
 
 const footer = () => {
     const shelterInfo = [{

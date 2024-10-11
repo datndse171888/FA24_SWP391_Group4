@@ -3,22 +3,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/authentication/login/login.jsx";
 import Home from "./pages/userUI/homepage/homepage.jsx";
-import PetList from "./pages/userUI/pet/viewPetList.jsx";
-import ViewPetDetail from "./pages/userUI/pet/viewPetDetail.jsx";
+import ViewDetail from "./pages/userUI/pet/viewPetDetail.jsx";
 import Register from "./pages/authentication/register/register.jsx";
-import ViewPetList from "./pages/userUI/pet/viewPetList.jsx";
+import ViewList from "./pages/userUI/pet/viewPetList.jsx";
+import Dashboard from "./pages/adminUI/dashboard/dashboard.jsx";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="viewlist" element={<ViewPetList />} />
-        
+        <Route path="viewlist" element={<ViewList />} />      
         <Route path="/" element={<Navigate to="home" />} />
         <Route path="home" element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="petlist" element={<PetList />} />
-        <Route path="catdetail/:id" element={<ViewPetDetail />} />
+        <Route path="catdetail/:id" element={<ViewDetail />} />
         <Route path="register" element={<Register />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
