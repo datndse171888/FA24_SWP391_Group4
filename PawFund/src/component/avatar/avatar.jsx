@@ -25,7 +25,7 @@ const avatar = () => {
 
     return (
         <div>
-            <Image src={profile && profile.avatar ? profile.avatar : DefaultAvatar} className='avatar' alt='Avatar' onClick={handleShowCanvas} roundedCircle />
+            <Image src={profile && profile.avatar ? profile.avatar : DefaultAvatar} id='avatar' alt='Avatar' onClick={handleShowCanvas} roundedCircle />
             <Offcanvas show={showCanvas} onHide={handleShowCanvas}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>{profile.name}</Offcanvas.Title>

@@ -1,7 +1,7 @@
 import { Card, CardBody, CardImg, CardTitle } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 import React, { useState } from "react";
-import "./viewPetList.css";
+import "./viewCatList.css";
 import Header from "../../../component/header/header";
 import CatCard from "../../../component/card/card";
 
@@ -67,7 +67,7 @@ const viewPetList = () => {
             <label className="block">Độ tuổi</label>
             <select
               name="age"
-              className="custom-select custom-select-blue"
+              className="custom-select"
               value={filters.age}
               onChange={handleFilterChange}
             >

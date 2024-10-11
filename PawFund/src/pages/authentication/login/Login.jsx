@@ -23,14 +23,14 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      // const json = {
-      //     "email": account.gmail,
-      //     "password": account.password
-      // }
+      const json = {
+          "email": account.gmail,
+          "password": account.password
+      }
 
-      let formData = new FormData();
-      formData.append("gmail", account.gmail);
-      formData.append("password", account.password);
+      // let formData = new FormData();
+      // formData.append("email", account.gmail);
+      // formData.append("password", account.password);
 
       const config = {
         headers: {
@@ -38,7 +38,7 @@ const Login = () => {
         },
       };
 
-      let res = await api.post("/login", formData, config);
+      let res = await api.post("/login", json, config);
       const data = res?.data;
       if (data && data.token) {
         console.log(data.token);

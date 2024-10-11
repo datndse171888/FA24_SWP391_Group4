@@ -15,7 +15,7 @@ const footer = () => {
 
     return (
         <Container className='d-flex align-self-end row justify-content-around mx-auto'>
-            <Image src={Logo} className='col-3 mx-auto' alt='Logo' roundedCircle />
+            <Image src={Logo} className='col-3 mx-auto' alt='Logo' />
             <div className='col-4 align-self-center mx-auto'>
                 <p>Địa chỉ: {shelterInfo[0].address}, {shelterInfo[0].city}</p>
                 <p>Điện thoại: {shelterInfo[0].phone}</p>

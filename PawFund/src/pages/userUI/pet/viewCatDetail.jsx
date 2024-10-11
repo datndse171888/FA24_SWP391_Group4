@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import './viewPetDetail.css';
+import './viewCatDetail.css';
 
 const viewPetDetail = () => {
     const [petInfo, setPetInfo] = useState({

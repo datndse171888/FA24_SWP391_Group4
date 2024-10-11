@@ -9,7 +9,7 @@ const header = () => {
   return (
     <Navbar className="navbar p-0" data-bs-theme="light">
       <Container>
-        <Image src={Logo} className='logo border' alt='Logo' roundedCircle />
+        <Image src={Logo} id='logo' className='border' alt='Logo' roundedCircle />
         <Navbar.Brand className="pawfund" href="/">PawFund</Navbar.Brand>
         {/* <Navbar.Collapse className=''>
            <Nav className='mx-auto row'>
