@@ -12,12 +12,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="viewlist" element={<ViewPetList />} />
-        <Route path="catdetail" element={<ViewPetDetail />} />
+        
         <Route path="/" element={<Navigate to="home" />} />
         <Route path="home" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="petlist" element={<PetList />} />
-        <Route path="catdetail" element={<ViewPetDetail />} />
+        <Route path="catdetail/:id" element={<ViewPetDetail />} />
         <Route path="register" element={<Register />} />
       </Routes>
     </BrowserRouter>

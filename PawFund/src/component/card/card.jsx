@@ -1,58 +1,28 @@
-import {
-  Button,
-  Card,
-  CardBody,
-  CardImg,
-  CardTitle,
-  ListGroup,
-} from "react-bootstrap";
+import { Button, Card, CardBody, CardTitle, ListGroup } from "react-bootstrap";
 import "./card.css";
+import { Navigate } from "react-router-dom";
+import { useState } from "react";
+
 
 const card = ({ cat }) => {
+  cat.id = useState(1)
   return (
-    // <Card style={{ width: '18rem' }}>
-    //     <Card.Img variant="top" src={cat.image} />
-    //     <Card.Body>
-    //         <Card.Title>{cat.name}</Card.Title>
-    //         <Card.Text>
-    //             <p>Age: {cat.age}</p>
-    //             <p>Breed: {cat.breed}</p>
-    //         </Card.Text>
-    //         <Button variant="primary">Go somewhere</Button>
-    //     </Card.Body>
-    // </Card>
-    <div className="card">
-      <Card
-        Card
-        style={{
-          width: "18rem",
-          paddingBlock: "20px",
-          marginBlock: "20px",
-          marginLeft: "20px",
-        }}
-      >
-        <CardImg variant="top" src="holder.js/100px180?text=Image cap" />
-        <CardBody>
-          <CardTitle>Name: {cat.name}</CardTitle>
-        </CardBody>
-        <ListGroup className="list-group-flush" style={{ width: "293px" }}>
-          <ListGroup.Item style={{ width: "17.5rem" }} className="listg">
-            Age: {cat.age}
-          </ListGroup.Item>
-          <ListGroup.Item style={{ width: "17.5rem" }} className="listg">
-            Gender: {cat.gender}
-          </ListGroup.Item>
-          <ListGroup.Item style={{ width: "17.5rem" }} className="listg">
-            Breed: {cat.breed}
-          </ListGroup.Item>
-        </ListGroup>
-        <CardBody>
-          <Button className="btn" variant="primary">
-            View more
-          </Button>
-        </CardBody>
+    <div className="col-2 listCat">
+      <Card >
+        <Card.Img className='ImgCatList' src={cat.img} />
+        <Card.Body>
+          <Card.Title className="nameCat">{cat.name}</Card.Title>
+          <Card.Text className="infoCat">
+            <p className="m-0">Age: {cat.age}</p>
+            <p className="m-0">Breed: {cat.breed}</p>
+            <p className="m-0">Gender: {cat.gender}</p>
+          </Card.Text>
+          <Button variant="primary" className="btnViewDetail" href="catdetail/${cat.id}" >View detail</Button>
+        </Card.Body>
       </Card>
     </div>
+
+
   );
 };
 
