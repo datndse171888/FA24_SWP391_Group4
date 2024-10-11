@@ -1,13 +1,37 @@
-.card{
-    display: flex;
-    margin-left: 50px;
-    margin-block: 20px;
-    width: 441px;;
- background-color: #afd4ff;
- 
-}
-.btn{
+.nameCat {
+    font-size: 40px;
+    font-weight: bold;
+    color: #000000;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    cursor: pointer;
-    text-transform: uppercase;
+}
+
+.infoCat {
+    font-size: 25px;
+    color: #000000;
+}
+
+.btnViewDetail {
+    background-color: #ffd3d3;
+    border: 1px solid #660099;
+    color: rgb(123, 0, 255);
+    text-align: center;
+    font-size: 18px;
+   margin-left: 83px ;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.btnViewDetail:hover {
+    background-color: aquamarine;
+}
+
+.ImgCatList{
+  padding: auto;
+  height: 250px;
+
+}
+
+.listCat{
+   margin-left: 50px;
+   margin-right: 50px;
 }

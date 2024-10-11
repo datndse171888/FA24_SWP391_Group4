@@ -14,7 +14,7 @@ const body = () => {
 
       <div className="help-section">
         <div className="overlay"></div>
-        <div className="content">
+        <div className="contentField">
           <h3 className="title-2">How You Can Help</h3>
           <div className="button-container">
             <button className="action-button">DONATE NOW</button>

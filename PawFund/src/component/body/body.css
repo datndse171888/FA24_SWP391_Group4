@@ -52,7 +52,7 @@ body {
   z-index: 1;
 }
 
-.content {
+.contentField {
   position: relative;
   z-index: 2;
   text-align: center;
@@ -92,7 +92,7 @@ body {
   background-color: #1d4ed8;
 }
 
-.card-container {
+/* .card-container {
   display: flex;
   gap: 20px;
   padding: 20px;
@@ -153,4 +153,4 @@ body {
 
 .card button:hover {
   background-color: #d81b60;
-}
+} */

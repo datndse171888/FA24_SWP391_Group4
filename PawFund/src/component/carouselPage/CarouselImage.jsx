@@ -8,13 +8,13 @@ const CarouselImage = () => {
   return (
     <Carousel>
       <Carousel.Item>
-        <img className="img" src={img1} alt="First slide" />
+        <img className="imgbanner" src={img1} alt="First slide" />
       </Carousel.Item>
       <Carousel.Item>
-        <img className="img" src={img2} alt="Second slide" />
+        <img className="imgbanner" src={img2} alt="Second slide" />
       </Carousel.Item>
       <Carousel.Item>
-        <img className="img" src={img3} alt="Third slide" />
+        <img className="imgbanner" src={img3} alt="Third slide" />
       </Carousel.Item>
     </Carousel>
   );
