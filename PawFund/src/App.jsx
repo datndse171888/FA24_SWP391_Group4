@@ -13,7 +13,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="viewlist" element={<ViewList />} />
         <Route path="/" element={<Navigate to="home" />} />
         <Route path="home" element={<Home />} />
