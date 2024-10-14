@@ -4,9 +4,13 @@ import { useParams } from 'react-router-dom'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './viewCatDetail.css';
+import img1 from '../../../Image/cat/cat05.jpg';
+import Header from '../../../component/header/header';
+import Footer from '../../../component/footer/footer';
 
 const viewPetDetail = () => {
-    const [petInfo, setPetInfo] = useState({
+    const [catInfo, setCatInfo] = useState({
+        img: '',
         name: '',
         color: '',
         gender: '',
@@ -16,6 +20,18 @@ const viewPetDetail = () => {
         sterilization: '',
         vaccination: ''
     })
+
+    const catjson = [{
+        img: img1,
+        name: 'Toto',
+        color: 'White',
+        gender: 'Female',
+        age: '2',
+        weight: '12kg',
+        breed: 'Persian',
+        sterilization: 'No',
+        vaccination: 'No'
+    }]
 
     const [register, setRegister] = useState({
         catID: useParams(),
@@ -36,31 +52,37 @@ const viewPetDetail = () => {
     }
 
     return (
-        <div className='body'>
-            <Container>
-                <Row>
-                    <Col className='col1' >
-                        <h1>Image</h1>
-                        <img src={petInfo.img} alt={petInfo.name} className="img-fluid" />
-                    </Col>
-                    <Col className='col2'>
-                        <ul className="list-group">
-                            <li className="list-group-item">Name: {petInfo.name}</li>
-                            <li className="list-group-item">Color: {petInfo.color}</li>
-                            <li className="list-group-item"> Gender: {petInfo.gender}</li>
-                            <li className="list-group-item">Age: {petInfo.age}</li>
-                            <li className="list-group-item">Weight: {petInfo.weight}</li>
-                            <li className="list-group-item">Breed: {petInfo.breed}</li>
-                            <li className="list-group-item">Sterilization: {petInfo.sterilization}</li>
-                            <li className="list-group-item">Vaccination: {petInfo.vaccination}</li>
-                        </ul>
+        <div>
+            <Header />
+            <div>
+                <h1 className='titleCatDetail'>Thông tin chi tiết của mèo</h1>
+            </div>
+            <div className='bodyCatDetail'>
+                <Container>
+                    <Row>
+                        <Col className='col1Detail' >
+                            <img src={catInfo.img} alt={catInfo.name} className="img-fluid imgDetail" />
+                        </Col>
+                        <Col className='col2Detail'>
+                            <ul className="list-group infoDetail">
+                                <h1> Name: {catInfo.name}</h1>
+                                <li className="list-group-item">Color: {catInfo.color}</li>
+                                <li className="list-group-item">Gender: {catInfo.gender}</li>
+                                <li className="list-group-item">Age: {catInfo.age}</li>
+                                <li className="list-group-item">Weight: {catInfo.weight}</li>
+                                <li className="list-group-item">Breed: {catInfo.breed}</li>
+                                <li className="list-group-item">Sterilization: {catInfo.sterilization}</li>
+                                <li className="list-group-item">Vaccination: {catInfo.vaccination}</li>
+                            </ul>
 
-                    </Col>
-                    <div className="input-button">
-                        <button className='btn1'>Adopted</button>
-                    </div>
-                </Row>
-            </Container>
+                        </Col>
+                        <div className="input-button">
+                            <button className='btnAdopted'>Adopted</button>
+                        </div>
+                    </Row>
+                </Container>
+            </div>
+            <Footer />
         </div>
     )
 }
