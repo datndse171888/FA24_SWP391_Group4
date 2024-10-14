@@ -1,36 +1,47 @@
 .nameCat {
     font-size: 40px;
     font-weight: bold;
-    color: #000000;
+    color: #2d012e;
     margin: 0;
     padding: 0;
     text-align: center;
+    font-family: 'sans-serif';
 }
 
 .infoCat {
     font-size: 25px;
     color: #000000;
+    font-family: 'serif';
+    margin-left: 20px;
 }
 
 .btnViewDetail {
-    background-color: #ffd3d3;
-    border: 1px solid #660099;
-    color: rgb(123, 0, 255);
+    background-color: #1d4ed8;
+    border: 2px solid #81e2ff;
+    color: rgb(255, 195, 138);
     text-align: center;
-    font-size: 18px;
-   margin-left: 83px ;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    margin-left: 75px;
+    font-family: 'Arial, sans-serif';
+    margin-top: 10px;
+    border-radius: 20px;
 }
+
 .btnViewDetail:hover {
     background-color: aquamarine;
 }
 
-.ImgCatList{
-  padding: auto;
-  height: 250px;
+.ImgCatList {
+    padding: auto;
+    height: 250px;
+
 }
 
-.listCat{
-   margin-left: 50px;
-   margin-right: 50px;
+.listCat {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.infotext{
+    margin-bottom: 1px;
 }

@@ -1,33 +1,52 @@
-.body{
-    place-items: center;
-    place-content: center;
-    padding-top: 50px;
-   color: blue;
-   background-color: #CC99FF;
+.titleCatDetail {
+    text-align: center;
+    font-family: 'sans-serif';
+    font-size: 70px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #fdd835;
 }
-.list-group{
-    width: 500px;
+
+.bodyCatDetail {
+    margin-left: 100px;
+    margin-right: 100px;
 }
-.col1{
-    margin-right: -200px;
-    margin-left: 190px;
+
+.col1Detail {
+    margin-top: 40px;
+    font-family: 'sans-serif';
+    font-size: 40px;
 }
-.col2{
-    margin-left: -0px;
+
+.imgDetail {
+    width: 800px;
+    height: 400px;
+    border-radius: 30px;
 }
-.list-group-item{
-    margin: 3px;
+
+.col2Detail {
+    margin-top: 50px;
     border-radius: 10px;
 }
-.input-button{
-  margin-left: 250px;
+
+.btnAdopted {
+    margin-left: 870px;
+    width: 120px;
+    border-radius: 20px;
+    height: 40px;
+    margin-top: 5px;
+    background-color: #1d4ed8;
+    text-align: center;
+    font-family: 'Arial, sans-serif';
+    font-size: 25px;
+    border: 2px solid #81e2ff;
+    color: rgb(255, 195, 131);
 }
-.btn1{
-    background-color: 	#ffd3d3;
-    border-radius: 100px;
-    border:1px solid #660099;
-    color: rgb(123, 0, 255);
-    text-transform: uppercase;
-    font-weight: 900;
-    text-shadow: 2px 2px 5px rgb(241, 176, 239);
+
+.infoDetail {
+    border-radius: 10px;
+    background-color: #dcfff6;
+    box-shadow: 5px 5px 20px 8px #81e2ff;
+    font-family: 'Arial, sans-serif';
+    font-size: 20px;
 }
