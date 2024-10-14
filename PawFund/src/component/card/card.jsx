@@ -4,9 +4,11 @@ import { useState } from "react";
 
 
 const card = ({ cat }) => {
-  cat.id = useState(1)
+  const click = () => {
+    console.log(cat.id)
+  }
   return (
-    <div className="col-2 listCat">
+    <div className="col-3">
       <Card >
         <Card.Img className='ImgCatList' src={cat.img} />
         <Card.Body>
@@ -16,7 +18,7 @@ const card = ({ cat }) => {
             <p className="m-0">Breed: {cat.breed}</p>
             <p className="m-0">Gender: {cat.gender}</p>
           </Card.Text>
-          <Button variant="primary" className="btnViewDetail" href="catdetail/${cat.id}" >View detail</Button>
+          <Button variant="primary" className="btnViewDetail" href={`catdetail/${cat.id}`} >View detail</Button>
         </Card.Body>
       </Card>
     </div>
