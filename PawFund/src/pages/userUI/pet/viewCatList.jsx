@@ -2,8 +2,8 @@ import { Card, CardBody, CardImg, CardTitle } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 import React, { useState } from "react";
 import "./viewCatList.css";
-import Header from "../../../component/header/header";
-import CatCard from "../../../component/card/card";
+import Header from "../../../component/header/header.jsx";
+import CatCard from "../../../component/card/card.jsx";
 import img1 from "../../../Image/cat/cat01.jpg";
 import img2 from "../../../Image/cat/cat02.jpg";
 import img3 from "../../../Image/cat/cat03.jpg";
@@ -16,6 +16,7 @@ import img8 from "../../../Image/cat/cat08.jpg";
 
 const viewPetList = () => {
   const [catInfo, setCatInfo] = useState({
+    id: "",
     img: "",
     name: "",
     age: "",
@@ -24,6 +25,7 @@ const viewPetList = () => {
   });
 
   const catjson = [{
+    id: 1,
     img: img1,
     name: "Toto",
     age: "2",
@@ -31,6 +33,7 @@ const viewPetList = () => {
     breed: "Persian",
   },
   {
+    id: 2,
     img: img2,
     name: "Jame",
     age: "5",
@@ -38,6 +41,7 @@ const viewPetList = () => {
     breed: "Scotland",
   },
   {
+    id: 3,
     img: img3,
     name: "Tina",
     age: "6",
@@ -45,6 +49,7 @@ const viewPetList = () => {
     breed: "Maine Coon",
   },
   {
+    id: 4,
     img: img4,
     name: "Tom",
     age: "5",
@@ -52,6 +57,7 @@ const viewPetList = () => {
     breed: "Scottish Fold",
   },
   {
+    id: 5,
     img: img5,
     name: "Teo",
     age: "2",
@@ -59,6 +65,7 @@ const viewPetList = () => {
     breed: "Sphynx",
   },
   {
+    id: 6,
     img: img6,
     name: "Hiragana",
     age: "1",
@@ -66,6 +73,7 @@ const viewPetList = () => {
     breed: "Munchkin ",
   },
   {
+    id: 7,
     img: img7,
     name: "Kanji",
     age: "3",
@@ -73,6 +81,7 @@ const viewPetList = () => {
     breed: "Somali",
   },
   {
+    id: 8,
     img: img8,
     name: "Katakana",
     age: "4",

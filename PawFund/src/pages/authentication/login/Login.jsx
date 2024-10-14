@@ -24,25 +24,26 @@ const Login = () => {
 
     try {
       const json = {
-          "email": account.gmail,
-          "password": account.password
+        "email": account.gmail,
+        "password": account.password
       }
 
       // let formData = new FormData();
       // formData.append("email", account.gmail);
       // formData.append("password", account.password);
 
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
+      // const config = {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "Access-Control-Allow-Origin": "*"
+      //   },
+      // };
 
-      let res = await api.post("/login", json, config);
+      const res = await api.post("/login", json);
       const data = res?.data;
-      if (data && data.token) {
-        console.log(data.token);
-        localStorage.setItem("token", data.token);
+      if (data) {
+        localStorage.setItem("token", data);
+        window.location.href = "/home";
       }
     } catch (error) {
       console.log(error);
