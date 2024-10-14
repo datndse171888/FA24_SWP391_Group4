@@ -21,8 +21,8 @@ const card = ({ cat }) => {
               Gender: {cat.gender}
             </Card.Text>
           </div>
-          <div className="d-flex align-center">
-            <Button variant="primary" className="btnViewDetail" href="catdetail/${cat.id}" >View detail</Button>
+          <div className="" id="viewDetail">
+            <Button variant="primary" className="mx-auto btnViewDetail" href={`/catDetail/${cat.id}`} >View detail</Button>
           </div>
         </Card.Body>
       </Card>
