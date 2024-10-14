@@ -38,7 +38,7 @@
 }
 
 .wrapper.active {
-  height: 520px;
+  height: 600px;
 }
 
 .wrapper.active .form-box.register {
@@ -151,6 +151,6 @@ form .register-link {
   text-decoration: underline;
 }
 
-.dropdown-item{
+.dropdown-item {
   width: 34.24vw;
 }
