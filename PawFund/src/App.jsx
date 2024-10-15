@@ -9,8 +9,8 @@ import ViewList from "./pages/userUI/pet/viewCatList.jsx";
 import AdoptedList from "./pages/shelterUI/adoptedApplication/adoptedList.jsx";
 import Dashboard from "./pages/adminUI/dashboard/dashboard.jsx";
 import PostInfo from "./pages/shelterUI/postCatInfo/postInfo.jsx";
-function App() {
 
+function App() {
   return (
     <BrowserRouter>
       <Routes>

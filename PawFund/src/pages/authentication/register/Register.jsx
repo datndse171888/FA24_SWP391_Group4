@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FaEnvelope } from "react-icons/fa";
 import { TbMoodLookLeft, TbMoodLookRight } from "react-icons/tb";
 import "./register.css";
-import { Dropdown, NavDropdown, DropdownButton } from "react-bootstrap";
+import { Dropdown, DropdownButton, Form } from "react-bootstrap";
 
 const Register = () => {
   const [register, setRegister] = useState({
@@ -29,7 +29,7 @@ const Register = () => {
 
   const [action, setAction] = useState("");
 
-  const [gender, setGender] = useState("Choose your gender");
+  const [gender, setGender] = useState("");
 
   const handleRegisterChange = (e) => {
     const name = e.target.name;
@@ -38,6 +38,7 @@ const Register = () => {
       ...register,
       [name]: value,
     });
+    console.log(name, value)
   };
 
   const handleShowPassword = () => {
@@ -111,25 +112,16 @@ const Register = () => {
     handleRegisterChange(e);
   };
 
-  const ValidateForm = () => {
-    if (register.password.length < 10) {
-      alert("Phone number must be at least 10 digits");
+  const validateForm = () => {
+    if (register.phoneNumber.length < 10 && register.phoneNumber.length > 11) {
+      alert("Phone number must be 10 or 11 numbers");
       return;
     }
     if (register.gender === "") {
-      alert("Please choose at least one!!!");
+      alert("Gender: Please choose at least one!!!");
       return;
     }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const isValid = ValidateForm();
-    if (isValid) {
-      console.log("Form submit", register);
-    } else {
-      console.log("Form date failed");
-    }
+    console.log("Form submit", register);
   };
 
   return (
@@ -278,31 +270,32 @@ const Register = () => {
                 onChange={handleRegisterChange}
               />
             </div>
-            <div className="input-box">
-              <DropdownButton
-                id="dropdown-item-button"
-                title={gender}
-                onClick={handleGender}
+            <div className="my-4">
+              <Form.Label
+                className="col-4"
               >
-                <Dropdown.Item
-                  className="px-2 dropdown-item"
-                  name="roleId"
-                  value="1"
-                  as="button"
-                >
-                  Female
-                </Dropdown.Item>
-                <Dropdown.Item
-                  className="px-2 dropdown-item"
-                  name="roleId"
-                  value="2"
-                  as="button"
-                >
-                  Male
-                </Dropdown.Item>
-              </DropdownButton>
+                Gender
+              </Form.Label>
+              <Form.Check
+                className="col-4"
+                inline
+                label="Male"
+                value="Male"
+                name="gender"
+                type="radio"
+                onClick={handleRegisterChange}
+              />
+              <Form.Check
+                className="col-4"
+                inline
+                label="Female"
+                value="Female"
+                name="gender"
+                type="radio"
+                onClick={handleRegisterChange}
+              />
             </div>
-            <button type="submit" onClick={handleSubmit}>
+            <button type="submit" onClick={validateForm}>
               Register
             </button>
             <div className="register-link">
