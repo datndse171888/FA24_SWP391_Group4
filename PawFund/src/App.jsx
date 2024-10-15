@@ -8,8 +8,8 @@ import Register from "./pages/authentication/register/register.jsx";
 import ViewList from "./pages/userUI/pet/viewCatList.jsx";
 import AdoptedList from "./pages/shelterUI/adoptedApplication/adoptedList.jsx";
 import Dashboard from "./pages/adminUI/dashboard/dashboard.jsx";
-function App() {
 
+function App() {
   return (
     <BrowserRouter>
       <Routes>
