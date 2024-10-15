@@ -1,0 +1,76 @@
+.infoPostCat {
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.titleInfoCat {
+    font-size: 50px;
+    font-family: 'sans-serif';
+    color: #fdd835;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.formPostCat {
+    font-size: 30px;
+    font-family: 'sans-serif';
+    text-align: center;
+height: 750px;
+
+}
+
+.editlabel {
+    font-size: 20px;
+    margin-left: 20px;
+    width: 500px;
+    height: 30px;
+}
+
+.titlepost {
+    margin-left: -500px;
+    margin-bottom: -10px;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+}
+
+.bodyPostCat {
+    background-color: #d4b5ff;
+    border-radius: 30px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.btnPostCat {
+    text-align: center;
+}
+
+.btnPost {
+    width: 120px;
+    height: 40px;
+    font-size: 25px;
+    background-color: #1d4ed8;
+    text-align: center;
+    border-radius: 20px;
+    margin-top: -30px;
+    margin-bottom: 10px;
+    font-family:  'Arial, sans-serif';
+    color: rgb(255, 195, 131);
+    border: 2px solid #81e2ff;
+}
+
+
+
+.imgPostCat{
+width: 600px;
+height: 500px;
+border-radius: 10px;
+border: 2px solid #dff8ff;
+}
+
+.colum1{
+    margin-top: 40px;
+    font-family: 'sans-serif';
+    font-size: 40px;
+}

@@ -8,11 +8,13 @@ import Register from "./pages/authentication/register/register.jsx";
 import ViewList from "./pages/userUI/pet/viewCatList.jsx";
 import AdoptedList from "./pages/shelterUI/adoptedApplication/adoptedList.jsx";
 import Dashboard from "./pages/adminUI/dashboard/dashboard.jsx";
+import PostInfo from "./pages/shelterUI/postCatInfo/postInfo.jsx";
 function App() {
 
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="postinfo" element={<PostInfo />} />
         <Route path="viewlist" element={<ViewList />} />
         <Route path="/" element={<Navigate to="home" />} />
         <Route path="home" element={<Home />} />
