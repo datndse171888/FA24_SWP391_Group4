@@ -1,5 +1,5 @@
 // Register.jsx
-import api from "axios";
+import api from "../../../config/axios.jsx";
 import { useState } from "react";
 import { FaEnvelope } from "react-icons/fa";
 import { TbMoodLookLeft, TbMoodLookRight } from "react-icons/tb";
@@ -29,8 +29,6 @@ const Register = () => {
 
   const [action, setAction] = useState("");
 
-  const [gender, setGender] = useState("");
-
   const handleRegisterChange = (e) => {
     const name = e.target.name;
     let value = e.target.value;
@@ -38,7 +36,6 @@ const Register = () => {
       ...register,
       [name]: value,
     });
-    console.log(name, value)
   };
 
   const handleShowPassword = () => {
@@ -63,18 +60,18 @@ const Register = () => {
 
     try {
       const json = {
-        gmail: register.gmail,
-        password: register.password,
-        roleId: register.roleId,
-        avatar: register.avatar,
-        name: register.name,
-        address: register.address,
-        dateOfBirth: register.dateOfBirth,
-        gender: register.gender,
-        phoneNumber: register.phoneNumber,
+        "gmail": register.gmail,
+        "password": register.password,
+        "roleId": register.roleId,
+        "avatar": register.avatar,
+        "name": register.name,
+        "address": register.address,
+        "dateOfBirth": register.dateOfBirth,
+        "gender": register.gender,
+        "phoneNumber": register.phoneNumber,
       };
 
-      let res = await api.post("/register", json);
+      const res = await api.post("/register", json);
       if (res.status === 200) {
         console.log("Register success");
       }
@@ -105,11 +102,6 @@ const Register = () => {
 
   const registerLink = () => {
     setAction("");
-  };
-
-  const handleGender = (e) => {
-    setGender(e.target.innerText);
-    handleRegisterChange(e);
   };
 
   const validateForm = () => {
@@ -272,13 +264,13 @@ const Register = () => {
             </div>
             <div className="my-4">
               <Form.Label
-                className="col-4"
+                className="col-4 px-auto"
               >
                 Gender
               </Form.Label>
               <Form.Check
-                className="col-4"
                 inline
+                className="col-4"
                 label="Male"
                 value="Male"
                 name="gender"
@@ -286,8 +278,8 @@ const Register = () => {
                 onClick={handleRegisterChange}
               />
               <Form.Check
-                className="col-4"
                 inline
+                className="col-4"
                 label="Female"
                 value="Female"
                 name="gender"
