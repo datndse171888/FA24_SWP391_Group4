@@ -9,6 +9,7 @@ import ViewList from "./pages/userUI/pet/viewCatList.jsx";
 import AdoptedList from "./pages/shelterUI/adoptedApplication/adoptedList.jsx";
 import Dashboard from "./pages/adminUI/dashboard/dashboard.jsx";
 import PostInfo from "./pages/shelterUI/postCatInfo/postInfo.jsx";
+import NewsPage from "./pages/userUI/news/newsPage.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="catdetail/:id" element={<ViewDetail />} />
+        <Route path="newspage" element={<NewsPage />} />
         <Route path="register" element={<Register />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="adoptedlist" element={<AdoptedList />} />

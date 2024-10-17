@@ -1,0 +1,66 @@
+.dashboardbar {
+    background-color: rgb(210, 161, 255);
+    text-align: center;
+    height: 1000px;
+}
+
+.titleDashboard {
+    background-color: rgb(46, 0, 105);
+    color: white;
+    font-family: 'sans-serif';
+    font-size: 30px;
+    margin-bottom: 20px;
+    height: 80px;
+    padding-top: 15px;
+}
+
+.bodyDashboard {
+    color: rgb(56, 17, 250);
+    font-family: 'sans-serif';
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+.dashboardbig {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.DboardCat {
+    border: 1px solid black;
+    margin-bottom: 50px;
+    height: 200px;
+    width: 500px;
+}
+
+.DboardDonation {
+    border: 1px solid black;
+    height: 200px;
+    width: 500px;
+}
+
+.DboardUser {
+    border: 1px solid black;
+    margin-bottom: 50px;
+    height: 200px;
+    width: 500px;
+}
+
+.DboardDonor {
+    border: 1px solid black;
+    height: 200px;
+    width: 500px;
+}
+
+.dashboardMain {
+    margin: 30px;
+margin-left: 50px;
+}
+
+.titleUser{
+
+}
+
+.btnUser{
+    
+}

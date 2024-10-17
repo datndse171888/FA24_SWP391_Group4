@@ -1,0 +1,10 @@
+.card {
+  display: flex;
+  margin-block: 20px;
+  background-color: #afd4ff;
+}
+
+.loadcat {
+  margin-left: 10px;
+  margin-right: 10px;
+}
