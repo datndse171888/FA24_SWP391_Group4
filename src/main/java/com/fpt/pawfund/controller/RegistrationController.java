@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ import jakarta.validation.Valid;
 import java.util.Optional;
 import java.util.UUID;
 
+@CrossOrigin("*")
 @RestController
 public class RegistrationController {
 
@@ -45,14 +47,9 @@ public class RegistrationController {
             return ResponseEntity.badRequest().body(result.getAllErrors().get(0).getDefaultMessage());
         }
 
-        // Check if passwords match
-        if (!accountDTO.isPasswordMatching()) {
-            return ResponseEntity.badRequest().body("Passwords do not match.");
-        }
-
-        // Check if email already exists
-        if (accountRepository.findByEmail(accountDTO.getEmail()).isPresent()) {
-            return ResponseEntity.badRequest().body("Email is already in use.");
+        // Check if gmail already exists
+        if (accountRepository.findByGmail(accountDTO.getGmail()).isPresent()) {
+            return ResponseEntity.badRequest().body("Gmail is already in use.");
         }
 
         // Find role by role ID from the request
@@ -76,7 +73,7 @@ public class RegistrationController {
 
         // Create a new account
         Account account = new Account();
-        account.setEmail(accountDTO.getEmail());
+        account.setGmail(accountDTO.getGmail()); // Changed from getEmail to getGmail
         account.setPassword(passwordEncoder.encode(accountDTO.getPassword()));
         account.setActiveStatus(false);
         account.setProfile(profile); // Set the profile to the account
@@ -90,8 +87,8 @@ public class RegistrationController {
         accountRepository.save(account);
 
         // Send activation email
-        emailService.sendActivationEmail(accountDTO.getEmail(), activationToken);
+        emailService.sendActivationEmail(accountDTO.getGmail(), activationToken); // Changed from getEmail to getGmail
 
-        return ResponseEntity.ok("User registered successfully. Please check your email to activate your account.");
+        return ResponseEntity.ok("User registered successfully. Please check your gmail to activate your account.");
     }
 }

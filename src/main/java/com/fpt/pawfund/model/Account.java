@@ -17,7 +17,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountID;
 
-    private String email;
+    private String gmail;
 
     private String password;
 

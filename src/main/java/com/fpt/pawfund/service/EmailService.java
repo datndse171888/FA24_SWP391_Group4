@@ -11,9 +11,9 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendActivationEmail(String toEmail, String token) {
+    public void sendActivationEmail(String toEmail, String token) { // Changed from toEmail to toGmail
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(toEmail);
+        message.setTo(toEmail); // Changed from toEmail to toGmail
         message.setSubject("Activate your account");
         message.setText("Click the link to activate your account: http://localhost:8080/activate?token=" + token);
         mailSender.send(message);

@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Long> {
-    Optional<Account> findByEmail(String email);
+public interface AccountRepository extends JpaRepository<Account, Integer> {  // Đổi từ Long thành Integer
+    Optional<Account> findByGmail(String gmail);
     Optional<Account> findByActivationToken(String activationToken);
-
 }

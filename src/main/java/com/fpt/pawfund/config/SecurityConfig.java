@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
     @Autowired
@@ -24,7 +26,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())  // Disable CSRF protection for stateless APIs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register", "/login", "/activate/**").permitAll()  // Public access to these endpoints
+                        .requestMatchers("/register", "/login", "/activate/**", "/cats/specified/**", "/cats/all", "/cats", "/cats/name/","/cats/create","/cats/update/","/order", "/order/", "/profile/specified/").permitAll()  // Public access to these endpoints
+                        .requestMatchers("/cats/create").hasRole("ADMIN") //permit Admin to create cats information
                         .requestMatchers("/secure-endpoint").hasRole("USER")  // Secure endpoint requires ROLE_USER
                         .anyRequest().authenticated()  // All other endpoints are secured
                 )

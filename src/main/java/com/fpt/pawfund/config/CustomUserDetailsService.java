@@ -22,14 +22,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     private AccountRepository accountRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Account account = accountRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+    public UserDetails loadUserByUsername(String gmail) throws UsernameNotFoundException {
+        Account account = accountRepository.findByGmail(gmail)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with gmail: " + gmail));
 
         // Grant the user the ROLE_USER authority by default
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER" +account.getRole()));
 
-        return new User(account.getEmail(), account.getPassword(), authorities);
+        return new User(account.getGmail(), account.getPassword(), authorities);
     }
 }

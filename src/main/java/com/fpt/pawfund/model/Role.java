@@ -19,4 +19,7 @@ public class Role {
 
     @Column(name = "roleName")
     private String roleName;
+
+    public static class Pet {
+    }
 }
