@@ -3,6 +3,7 @@ package com.fpt.pawfund.controller;
 import com.fpt.pawfund.model.Account;
 import com.fpt.pawfund.model.AdoptedApplications;
 import com.fpt.pawfund.model.Cat;
+import com.fpt.pawfund.model.ResponseData;
 import com.fpt.pawfund.repository.AccountRepository;
 import com.fpt.pawfund.repository.AdoptedApplicationsRepository;
 import com.fpt.pawfund.repository.CatRepository;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
+
     @Autowired
     private AdoptedApplicationsRepository adoptedApplicationsRepository;
 
@@ -27,40 +29,48 @@ public class OrderController {
     @Autowired
     private AccountRepository accountRepository;
 
-    @PostMapping
-    public ResponseEntity<?> create(@RequestBody AdoptedApplications req){
+    // Tạo mới đơn adopt
+    @PostMapping("/create")
+    public ResponseEntity<ResponseData> create(@RequestBody AdoptedApplications req) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication == null){
+        if (authentication == null) {
             throw new RuntimeException("Authentication is null");
         }
-        String username = authentication.getName();
-        Optional<Account> byEmail = accountRepository.findByGmail(username);
-        if(byEmail.isEmpty()){
+        String gmail = authentication.getName(); // Lấy Gmail từ thông tin đăng nhập
+        Optional<Account> accountOptional = accountRepository.findByGmail(gmail);
+        if (accountOptional.isEmpty()) {
             throw new RuntimeException("Account not found");
         }
-        Account account = byEmail.get();
-        Optional<Cat> byId = catRepository.findById(req.getCatID());
-        if(byId.isPresent()){
-            Cat cat = byId.get();
-            AdoptedApplications adoptedApplications = new AdoptedApplications();
-            adoptedApplications.setCatID(cat.getCatID());
-            adoptedApplications.setStatus(req.getStatus());
-            adoptedApplications.setAdopterID(account.getAccountID());
-            adoptedApplicationsRepository.save(adoptedApplications);
-            return ResponseEntity.ok(adoptedApplications);
+        Account account = accountOptional.get();
+
+        Optional<Cat> catOptional = catRepository.findById(req.getCatID());
+        if (catOptional.isEmpty()) {
+            throw new RuntimeException("Cat not found with ID: " + req.getCatID());
         }
-        else {
-            throw new RuntimeException("Account not found");
-        }
+        Cat cat = catOptional.get();
+
+        // Tạo đối tượng AdoptedApplications mới
+        AdoptedApplications adoptedApplication = new AdoptedApplications();
+        adoptedApplication.setCatID(cat.getCatID());
+        adoptedApplication.setAdopterID(account.getAccountID());
+        adoptedApplication.setStatus(req.getStatus());
+
+        adoptedApplicationsRepository.save(adoptedApplication);
+
+        return ResponseEntity.ok(
+                new ResponseData(100, "Adoption application created successfully", adoptedApplication)
+        );
     }
 
+    // Lấy thông tin một đơn adopt theo ID
     @GetMapping("/{id}")
-    public ResponseEntity<?> get(@PathVariable int id){
-        Optional<AdoptedApplications> adoptedApplications = adoptedApplicationsRepository.findById(id);
-        if(adoptedApplications.isPresent()){
-            return ResponseEntity.ok(adoptedApplications.get());
-        }
-        else {
+    public ResponseEntity<ResponseData> get(@PathVariable int id) {
+        Optional<AdoptedApplications> adoptedApplicationOptional = adoptedApplicationsRepository.findById(id);
+        if (adoptedApplicationOptional.isPresent()) {
+            return ResponseEntity.ok(
+                    new ResponseData(100, "Get adoption application by ID: " + id, adoptedApplicationOptional.get())
+            );
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
