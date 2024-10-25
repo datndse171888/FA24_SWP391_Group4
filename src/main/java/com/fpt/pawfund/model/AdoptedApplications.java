@@ -32,7 +32,12 @@ public class AdoptedApplications {
     private String status;
 
     @CreatedDate
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Ho_Chi_Minh")
     @Column(name = "createdDate")
     private Date createdDate;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdDate = new Date();
+    }
 }
