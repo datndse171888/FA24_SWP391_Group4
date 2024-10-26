@@ -17,6 +17,21 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
 
+    @PostMapping("/create")
+    public ResponseEntity<ResponseData> createNews(@RequestBody News news) {
+        try {
+            News createdNews = newsService.createNews(news);
+            return ResponseEntity.ok(
+                    new ResponseData(100, "Post news information successfully !!", createdNews)
+            );
+        } catch (Exception e) {
+            return ResponseEntity.ok(
+                    new ResponseData(500, "Error : " + e.getMessage(), "")
+            );
+        }
+    }
+
+
     @GetMapping("/specified/{newsID}")
     public ResponseEntity<ResponseData> getNewsByID(@PathVariable("newsID") int newsID) {
         News news = newsService.getNewsById(newsID);

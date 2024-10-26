@@ -1,7 +1,7 @@
 package com.fpt.pawfund.model;
 import jakarta.persistence.*;
 import lombok.*;
-
+import java.sql.Blob;
 @Entity
 @Getter
 @Setter
@@ -21,7 +21,7 @@ public class News {
     private String content;
 
     @Lob
-    private byte[] image;
+    private Blob image;
 
     @Column(nullable = false)  // shelterID bắt buộc
     private Integer shelterID;

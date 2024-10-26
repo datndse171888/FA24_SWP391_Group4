@@ -12,6 +12,11 @@ public class NewsService {
     @Autowired
     private NewsRepository newsRepository;
 
+    public News createNews(News news) {
+        return newsRepository.save(news);
+    }
+
+
     public News getNewsById(int id) {
         return newsRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("News not found with ID: " + id));
