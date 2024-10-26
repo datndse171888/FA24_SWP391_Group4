@@ -26,10 +26,16 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())  // Disable CSRF protection for stateless APIs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register", "/login", "/activate/**", "/cats/specified/**", "/cats/all", "/cats", "/cats/name/","/cats/create","/cats/update/","/order", "/order/", "/profile/specified/").permitAll()  // Public access to these endpoints
-                        .requestMatchers("/cats/create").hasRole("ADMIN") //permit Admin to create cats information
+                        .requestMatchers("/register", "/login", "/activate/**", "/cats/specified/**", "/cats/all", "/cats", "/cats/name/").permitAll()  // Public access to these endpoints
+                        .requestMatchers("/cats/create").hasRole("SHELTER") // Permit shelter to create cat information
+                        .requestMatchers("/news").permitAll() // Allow all users to get news
+                        .requestMatchers("/news/specified/**").permitAll() // Allow all users to get specific news
+                        .requestMatchers("/events").permitAll() // Allow all users to get events
+                        .requestMatchers("/events/specified/**").permitAll() // Allow all users to get specific events
+                        .requestMatchers("/adopted-applications").hasAnyRole("SHELTER", "ADOPTER") // Allow shelter and adopter to access their applications
+                        .requestMatchers("/adopted-applications/specified/**").hasAnyRole("SHELTER", "ADOPTER") // Allow shelter and adopter to access specific applications
                         .requestMatchers("/secure-endpoint").hasRole("USER")  // Secure endpoint requires ROLE_USER
-                        .anyRequest().authenticated()  // All other endpoints are secured
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)  // Stateless session management
