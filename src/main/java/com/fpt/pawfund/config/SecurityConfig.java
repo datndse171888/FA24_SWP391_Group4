@@ -1,5 +1,6 @@
 package com.fpt.pawfund.config;
 
+import com.fpt.pawfund.controller.VNPayController;
 import com.fpt.pawfund.security.JwtRequestFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())  // Disable CSRF protection for stateless APIs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register", "/login", "/activate/**", "/cats/specified/**", "/cats/all", "/cats", "/cats/name/").permitAll()  // Public access to these endpoints
+                        .requestMatchers("/register", "/login", "/activate/**", "/cats/specified/**", "/cats/all", "/cats", "/cats/name/", "/submitOrder", "/vnpay-payment" ).permitAll()  // Public access to these endpoints
                         .requestMatchers("/cats/create").hasRole("SHELTER") // Permit shelter to create cat information
                         .requestMatchers("/news").permitAll() // Allow all users to get news
                         .requestMatchers("/news/specified/**").permitAll() // Allow all users to get specific news
