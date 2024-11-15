@@ -1,0 +1,54 @@
+.container-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.input-form {
+    display: block;
+    height: auto;
+    background-color: #d4b5ff;
+    border-radius: 10px;
+}
+
+.input-field {
+    position: relative;
+}
+
+.input-field_input {
+    font: inherit;
+    color: #000;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    outline: 2px solid #000;
+    background-color: transparent;
+    transition: outline-color 500ms;
+}
+
+.input-field_input:is(:focus, :valid) {
+    outline-color: #3c50eb;
+}
+
+.input-field_label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: 10px 10px;
+    color: #000;
+    transition: translate 500ms,
+        scale 500ms;
+}
+
+.input-field_input:focus+.input-field_label,
+.input-field_input:valid+.input-field_label {
+    padding-inline: 5px;
+    translate: 10px -14px;
+    scale: 0.8;
+    background-color: #d4b5ff;
+}
+
+.input-button {
+    
+}

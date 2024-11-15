@@ -1,0 +1,156 @@
+.register-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.register-page {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("./Components/Assets/try.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper {
+  position: relative;
+  width: 420px;
+  height: 550px;
+  background: #d4b5ff;
+  border: 2px solid #d4b5ff;
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
+  color: #002795;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: height 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .form-box {
+  width: 100%;
+  padding: 40px;
+}
+
+.wrapper.active {
+  height: 600px;
+}
+
+.wrapper.active .form-box.register {
+  transition: none;
+  translate: -400px;
+}
+
+.wrapper .form-box.information {
+  position: absolute;
+  transition: none;
+  translate: 400px;
+}
+
+.wrapper .form-box.register {
+  transition: translate 0.18s ease;
+  translate: 0;
+}
+
+.wrapper.active .form-box.information {
+  transition: translate 0.18s ease;
+  translate: 0;
+}
+
+form h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+form .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #ffffff;
+  padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+  color: #ffffff;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  translate: 0 -50%;
+  font-size: 16px;
+}
+
+form .forgot-remember {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+  color: #002795;
+}
+
+.forgot-remember label input {
+  accent-color: #fff;
+  margin-right: 4px;
+}
+
+.forgot-remember a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.forgot-remember a:hover {
+  text-decoration: underline;
+}
+
+form button {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 700;
+}
+
+form .register-link {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+
+.register-link p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+.dropdown-item {
+  width: 34.24vw;
+}
